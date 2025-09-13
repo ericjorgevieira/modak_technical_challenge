@@ -5,6 +5,7 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../router/RootNavigator";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ProductsList from "../components/products/ProductsList";
+import LoadingFailed from "../components/LoadingFailed";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;
 
@@ -15,24 +16,15 @@ export default function HomeScreen({ navigation }: Props) {
   });
 
   if (isLoading) {
-    return <LoadingSpinner text="Carregando produtos…" />;
+    return <LoadingSpinner text="Loading products…" />;
   }
 
   if (isError || !data) {
     return (
-      <View
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          padding: 16,
-        }}
-      >
-        <Text>Falha ao carregar. Verifique sua conexão.</Text>
-        <TouchableOpacity onPress={() => refetch()} style={{ marginTop: 12 }}>
-          <Text style={{ color: "blue" }}>Tentar novamente</Text>
-        </TouchableOpacity>
-      </View>
+      <LoadingFailed
+        text="Failed to load. Check your network."
+        onTryAgain={() => refetch()}
+      />
     );
   }
 
