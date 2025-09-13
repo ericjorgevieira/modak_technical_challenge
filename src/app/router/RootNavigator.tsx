@@ -1,6 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text } from "react-native";
+import HomeScreen from "../screens/HomeScreen";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -21,9 +22,11 @@ function Placeholder({ title }: { title: string }) {
 export default function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" options={{ title: "Products" }}>
-        {() => <Placeholder title="Home (lista de produtos)" />}
-      </Stack.Screen>
+      <Stack.Screen
+        name="Home"
+        options={{ title: "Products" }}
+        component={HomeScreen}
+      ></Stack.Screen>
       <Stack.Screen name="Category" options={{ title: "Categoria" }}>
         {() => <Placeholder title="Category (filtrados)" />}
       </Stack.Screen>
