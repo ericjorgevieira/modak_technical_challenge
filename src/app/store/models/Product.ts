@@ -4,9 +4,9 @@ export type Product = {
   id: ProductId;
   title: string;
   description: string;
-  price: number; // em USD (DummyJSON)
+  price: number;
   discountPercentage?: number;
-  rating: number; // 0..5
+  rating: number;
   stock: number;
   brand?: string;
   category: string;
