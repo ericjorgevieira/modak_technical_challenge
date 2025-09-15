@@ -1,16 +1,17 @@
 import { api } from "./api";
-import type { Product, ProductId } from "../store/models/Product";
+import type { Product } from "../store/models/Product";
 import type {
   ProductListParams,
   ProductListResponse,
   ProductRepository,
   ProductListApi,
 } from "../store/repositories/ProductRepository";
-import { ProductApitoEntity as toEntity } from "../store/repositories/ProductRepository";
+import { ProductApiToEntity as toEntity } from "../store/repositories/ProductRepository";
+import { Category } from "../store/models/Category";
 
 export class ApiProducts implements ProductRepository {
-  async listCategories(): Promise<string[]> {
-    const { data } = await api.get<string[]>("/products/categories");
+  async listCategories(): Promise<Category[]> {
+    const { data } = await api.get<Category[]>("/products/categories");
     return Array.isArray(data) ? data : [];
   }
 

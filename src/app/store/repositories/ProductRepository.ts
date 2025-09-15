@@ -1,10 +1,11 @@
+import { Category } from "../models/Category";
 import { Product } from "../models/Product";
 
 export type ProductListParams = {
   category?: string;
   search?: string;
-  page?: number; // 1-based
-  limit?: number; // default 20
+  page?: number;
+  limit?: number;
 };
 
 export type SortKey = "price" | "rating";
@@ -24,7 +25,7 @@ export type ProductListApi = {
   limit: number;
 };
 
-export function ProductApitoEntity(p: Product): Product {
+export function ProductApiToEntity(p: Product): Product {
   return {
     id: p.id,
     title: p.title,
@@ -41,7 +42,7 @@ export function ProductApitoEntity(p: Product): Product {
 }
 
 export interface ProductRepository {
-  listCategories(): Promise<string[]>;
+  listCategories(): Promise<Category[]>;
   listProducts(params?: ProductListParams): Promise<ProductListResponse>;
   getProductById(id: number): Promise<Product>;
 }

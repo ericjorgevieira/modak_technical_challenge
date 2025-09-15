@@ -1,10 +1,11 @@
 import React from "react";
 import { ScrollView, TouchableOpacity, Text, View } from "react-native";
+import { Category } from "../../../store/models/Category";
 
 type Props = {
-  categories: any;
-  selected?: any;
-  onSelect: (category?: any) => void;
+  categories: Category[];
+  selected?: string;
+  onSelect: (categorySlug?: string) => void;
 };
 
 export default function CategoryFilter({
@@ -24,7 +25,7 @@ export default function CategoryFilter({
           active={!selected}
           onPress={() => onSelect(undefined)}
         />
-        {categories.map((c: any, key: any) => (
+        {categories.map((c: Category, key: any) => (
           <CategoryItem
             key={key}
             label={c.name}
