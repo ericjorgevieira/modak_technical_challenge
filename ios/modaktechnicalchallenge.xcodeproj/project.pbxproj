@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		1A07171F2E78449B006F4E11 /* PurchaseReminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A07171D2E78449B006F4E11 /* PurchaseReminder.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
 		A623117733FF40D4B7684D7E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 8993FA4A27624FEEB09A3699 /* PrivacyInfo.xcprivacy */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
@@ -20,10 +21,12 @@
 		13B07F961A680F5B00A75B9A /* modaktechnicalchallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = modaktechnicalchallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = modaktechnicalchallenge/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = modaktechnicalchallenge/Info.plist; sourceTree = "<group>"; };
+		1A07171C2E78449B006F4E11 /* PurchaseReminder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PurchaseReminder.h; sourceTree = "<group>"; };
+		1A07171D2E78449B006F4E11 /* PurchaseReminder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PurchaseReminder.m; sourceTree = "<group>"; };
 		37DF6A6FA94441A47D6C7A16 /* Pods-modaktechnicalchallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-modaktechnicalchallenge.debug.xcconfig"; path = "Target Support Files/Pods-modaktechnicalchallenge/Pods-modaktechnicalchallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		4436E407437E12A697E115E3 /* Pods-modaktechnicalchallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-modaktechnicalchallenge.release.xcconfig"; path = "Target Support Files/Pods-modaktechnicalchallenge/Pods-modaktechnicalchallenge.release.xcconfig"; sourceTree = "<group>"; };
 		8218A2BB5ADAB7C58629B63B /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-modaktechnicalchallenge/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		8993FA4A27624FEEB09A3699 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = modaktechnicalchallenge/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		8993FA4A27624FEEB09A3699 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = modaktechnicalchallenge/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = modaktechnicalchallenge/SplashScreen.storyboard; sourceTree = "<group>"; };
 		B7A3E688FC80B17046672BB3 /* libPods-modaktechnicalchallenge.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-modaktechnicalchallenge.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		13B07FAE1A68108700A75B9A /* modaktechnicalchallenge */ = {
 			isa = PBXGroup;
 			children = (
+				1A07171E2E78449B006F4E11 /* services */,
 				F11748412D0307B40044C1D9 /* AppDelegate.swift */,
 				F11748442D0722820044C1D9 /* modaktechnicalchallenge-Bridging-Header.h */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
@@ -56,6 +60,15 @@
 				8993FA4A27624FEEB09A3699 /* PrivacyInfo.xcprivacy */,
 			);
 			name = modaktechnicalchallenge;
+			sourceTree = "<group>";
+		};
+		1A07171E2E78449B006F4E11 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				1A07171C2E78449B006F4E11 /* PurchaseReminder.h */,
+				1A07171D2E78449B006F4E11 /* PurchaseReminder.m */,
+			);
+			path = services;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -128,7 +141,6 @@
 				37DF6A6FA94441A47D6C7A16 /* Pods-modaktechnicalchallenge.debug.xcconfig */,
 				4436E407437E12A697E115E3 /* Pods-modaktechnicalchallenge.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -326,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
+				1A07171F2E78449B006F4E11 /* PurchaseReminder.m in Sources */,
 				DE1D4EB6BFDD3A930E5D39B8 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

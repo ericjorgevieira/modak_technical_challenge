@@ -1,4 +1,4 @@
-#import "PurchaseReminderModule.h"
+#import "PurchaseReminder.h"
 #import <EventKit/EventKit.h>
 
 @implementation PurchaseReminder
@@ -25,20 +25,20 @@ RCT_REMAP_METHOD(addReminder,
       return;
     }
 
-    // Datas
+    // Dates
     NSTimeInterval startInterval = [startTimestampMs doubleValue] / 1000.0; // ms -> s
     NSDate *startDate = [NSDate dateWithTimeIntervalSince1970:startInterval];
     NSTimeInterval durationSec = ([durationMinutes doubleValue] * 60.0);
     NSDate *endDate = [startDate dateByAddingTimeInterval:durationSec];
 
-    // Calendário padrão para novos eventos
+    // Default calendar for new events
     EKCalendar *calendar = [store defaultCalendarForNewEvents];
     if (calendar == nil) {
       reject(@"EK_NO_CALENDAR", @"No default calendar available", nil);
       return;
     }
 
-    // Evento
+    // Event
     EKEvent *event = [EKEvent eventWithEventStore:store];
     event.calendar = calendar;
     event.title = title ?: @"Purchase reminder";
@@ -46,7 +46,7 @@ RCT_REMAP_METHOD(addReminder,
     event.startDate = startDate;
     event.endDate = endDate;
 
-    // Alarme: 10 minutos antes
+    // Alarm: 10 minutes before
     EKAlarm *alarm = [EKAlarm alarmWithRelativeOffset:-10 * 60];
     event.alarms = @[alarm];
 
@@ -57,7 +57,7 @@ RCT_REMAP_METHOD(addReminder,
       return;
     }
 
-    // Resolve com eventIdentifier (string estável para abrir/editar depois, se quiser)
+    // Resolve with eventIdentifier
     resolve(@{ @"eventId": event.eventIdentifier ?: @"" });
   }];
 }

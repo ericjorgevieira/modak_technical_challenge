@@ -3,7 +3,6 @@ import { Platform } from "react-native";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
-    shouldShowAlert: true,
     shouldPlaySound: false,
     shouldSetBadge: false,
     shouldShowBanner: true,
@@ -30,6 +29,6 @@ export async function scheduleLocalNotification(title: string, body: string) {
   await ensureNotificationPermissions();
   return Notifications.scheduleNotificationAsync({
     content: { title, body },
-    trigger: null, // dispara imediatamente (p/ testes)
+    trigger: null,
   });
 }

@@ -5,7 +5,7 @@ import type { RootStackParamList } from "../router/RootNavigator";
 import { useProductDetailsQuery } from "../hooks/useProductsQuery";
 import ProductImages from "../components/products/ProductImages";
 import { scheduleLocalNotification } from "../services/notifications";
-import { addPurchaseReminder } from "../native/PurchaseRemider";
+import { addPurchaseReminder } from "../native/PurchaseReminder";
 import { Product } from "../store/models/Product";
 import LoadingSpinner from "../components/LoadingSpinner";
 import LoadingFailed from "../components/LoadingFailed";
