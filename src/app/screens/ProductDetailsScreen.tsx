@@ -1,16 +1,14 @@
 import React, { useMemo } from "react";
-import {
-  ActivityIndicator,
-  ScrollView,
-  Text,
-  View,
-  TouchableOpacity,
-} from "react-native";
+import { ScrollView, Text, View, TouchableOpacity } from "react-native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../router/RootNavigator";
 import { useProductDetailsQuery } from "../hooks/useProductsQuery";
 import ProductImages from "../components/products/ProductImages";
 import { scheduleLocalNotification } from "../services/notifications";
+import { addPurchaseReminder } from "../native/PurchaseRemider";
+import { Product } from "../store/models/Product";
+import LoadingSpinner from "../components/LoadingSpinner";
+import LoadingFailed from "../components/LoadingFailed";
 
 type Props = NativeStackScreenProps<RootStackParamList, "ProductDetails">;
 
@@ -24,30 +22,36 @@ export default function ProductDetailsScreen({ route, navigation }: Props) {
     refetch,
   } = useProductDetailsQuery(productId);
 
+  const handlePurchaseReminder = async (product: Product) => {
+    try {
+      await addPurchaseReminder(
+        `Evaluate purchase: ${product.title}`,
+        `Category: ${product.category}${
+          product.brand ? ` • Brand: ${product.brand}` : ""
+        }`,
+        60,
+        30
+      );
+      await scheduleLocalNotification(
+        "Purchase reminder",
+        `Remember to buy: ${product.title}`
+      );
+      alert(`Reminder created!`);
+    } catch (e: any) {
+      alert(e?.message ?? "Failed to create reminder");
+    }
+  };
+
   if (isLoading) {
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <ActivityIndicator />
-        <Text style={{ marginTop: 8 }}>Carregando…</Text>
-      </View>
-    );
+    return <LoadingSpinner text="Loading..." />;
   }
 
   if (isError || !product) {
     return (
-      <View
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          padding: 16,
-        }}
-      >
-        <Text>Não foi possível carregar este produto.</Text>
-        <TouchableOpacity onPress={() => refetch()} style={{ marginTop: 12 }}>
-          <Text style={{ color: "blue" }}>Tentar novamente</Text>
-        </TouchableOpacity>
-      </View>
+      <LoadingFailed
+        onTryAgain={() => refetch()}
+        text="Unable to load this product."
+      />
     );
   }
 
@@ -73,15 +77,9 @@ export default function ProductDetailsScreen({ route, navigation }: Props) {
         <Text style={{ lineHeight: 20 }}>{product.description}</Text>
       </View>
 
-      {/* Ação bônus opcional: lembrete de compra (notificação local) */}
       <View style={{ paddingHorizontal: 12, paddingTop: 20 }}>
         <TouchableOpacity
-          onPress={async () => {
-            await scheduleLocalNotification(
-              "Purchase reminder",
-              `Lembrar de avaliar compra de: ${product.title}`
-            );
-          }}
+          onPress={async () => await handlePurchaseReminder(product)}
           style={{
             alignSelf: "flex-start",
             paddingHorizontal: 16,
@@ -91,7 +89,7 @@ export default function ProductDetailsScreen({ route, navigation }: Props) {
             borderRadius: 8,
           }}
         >
-          <Text>Adicionar lembrete</Text>
+          <Text>Add reminder</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
