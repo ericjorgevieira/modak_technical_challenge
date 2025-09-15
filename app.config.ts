@@ -3,6 +3,7 @@ import { ExpoConfig } from "@expo/config";
 const config: ExpoConfig = {
   name: "modak_technical_challenge",
   slug: "modak_technical_challenge",
+  scheme: "productsapp",
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
@@ -15,7 +16,7 @@ const config: ExpoConfig = {
   },
   ios: {
     supportsTablet: true,
-    bundleIdentifier: "com.jobify.modak-technical-challenge",
+    bundleIdentifier: "com.modak.productsapp",
   },
   android: {
     adaptiveIcon: {
@@ -24,7 +25,7 @@ const config: ExpoConfig = {
     },
     edgeToEdgeEnabled: true,
     predictiveBackGestureEnabled: false,
-    package: "com.jobify.modak_technical_challenge",
+    package: "com.modak.productsapp",
   },
   web: {
     favicon: "./assets/favicon.png",

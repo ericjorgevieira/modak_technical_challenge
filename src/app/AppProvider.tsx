@@ -6,7 +6,6 @@ import RootNavigator, { RootStackParamList } from "./router/RootNavigator";
 
 const queryClient = new QueryClient();
 
-// Deep link config: productsapp://product/1, productsapp://category/electronics
 const prefix = Linking.createURL("/");
 const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [prefix, "productsapp://"],

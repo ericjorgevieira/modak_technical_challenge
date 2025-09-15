@@ -17,17 +17,16 @@ export function useProductsQuery(params: ProductsUIParams = {}) {
   return useQuery({
     queryKey: ["products", params],
     queryFn: async () => {
-      const res = await repo.listProducts({
+      const response = await repo.listProducts({
         category: params.category,
         search: params.search,
         page: params.page,
         limit: params.limit,
       });
 
-      // Sort client-side (pragmático para o teste)
       if (params.sortKey) {
         const dir = params.sortOrder === "desc" ? -1 : 1;
-        res.items = [...res.items].sort((a: any, b: any) => {
+        response.items = [...response.items].sort((a: any, b: any) => {
           const va = a[params.sortKey!];
           const vb = b[params.sortKey!];
           if (va === vb) return 0;
@@ -35,7 +34,23 @@ export function useProductsQuery(params: ProductsUIParams = {}) {
         });
       }
 
-      return res;
+      return response;
     },
+  });
+}
+
+export function useProductDetailsQuery(id?: number) {
+  const repo = useProductRepository();
+
+  return useQuery({
+    queryKey: ["product", id],
+    queryFn: async () => {
+      if (!id && id !== 0) {
+        throw new Error("Missing product id");
+      }
+      return repo.getProductById(id);
+    },
+    enabled: typeof id === "number",
+    staleTime: 5 * 60 * 1000,
   });
 }

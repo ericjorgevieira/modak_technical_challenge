@@ -2,6 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text } from "react-native";
 import HomeScreen from "../screens/HomeScreen";
+import ProductDetailsScreen from "../screens/ProductDetailsScreen";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -30,9 +31,11 @@ export default function RootNavigator() {
       <Stack.Screen name="Category" options={{ title: "Categoria" }}>
         {() => <Placeholder title="Category (filtrados)" />}
       </Stack.Screen>
-      <Stack.Screen name="ProductDetails" options={{ title: "Detalhes" }}>
-        {() => <Placeholder title="ProductDetails" />}
-      </Stack.Screen>
+      <Stack.Screen
+        name="ProductDetails"
+        options={{ title: "Details" }}
+        component={ProductDetailsScreen}
+      ></Stack.Screen>
     </Stack.Navigator>
   );
 }
