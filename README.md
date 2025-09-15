@@ -167,7 +167,6 @@ At **Expo Go**, use links in the format `exp://…/--/product/1`.
 - `npm run ios` — build/run on iOS (Dev Client).
 - `npm run android` — build/run on Android (Dev Client).
 - `npm run dev` — starts Metro server for Dev Client.
-- `npm run prebuild` — generates native files (iOS/Android).
 
 ---
 
