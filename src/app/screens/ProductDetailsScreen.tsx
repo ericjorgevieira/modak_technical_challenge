@@ -38,7 +38,11 @@ export default function ProductDetailsScreen({ route, navigation }: Props) {
       );
       alert(`Reminder created!`);
     } catch (e: any) {
-      alert(e?.message ?? "Failed to create reminder");
+      alert(
+        e?.message
+          ? `Failed to create reminder: ${e?.message}`
+          : "Failed to create reminder"
+      );
     }
   };
 

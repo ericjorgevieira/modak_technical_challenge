@@ -27,15 +27,12 @@ export default function RootNavigator() {
         name="Home"
         options={{ title: "Products" }}
         component={HomeScreen}
-      ></Stack.Screen>
-      <Stack.Screen name="Category" options={{ title: "Categoria" }}>
-        {() => <Placeholder title="Category (filtrados)" />}
-      </Stack.Screen>
+      />
       <Stack.Screen
         name="ProductDetails"
         options={{ title: "Details" }}
         component={ProductDetailsScreen}
-      ></Stack.Screen>
+      />
     </Stack.Navigator>
   );
 }
