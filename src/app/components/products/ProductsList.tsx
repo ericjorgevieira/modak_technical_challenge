@@ -105,20 +105,14 @@ const ProductsList: React.FC<ProductsListProps> = ({ onPressItem }) => {
         >
           <Text>Load more</Text>
         </TouchableOpacity>
-      ) : (
-        <Text style={{ textAlign: "center", color: "#6b7280" }}>
-          End of list
-        </Text>
-      )}
+      ) : null}
     </View>
   );
 
   return (
     <>
       {header()}
-      {isLoading ? (
-        <LoadingSpinner text="Loading products…" />
-      ) : isError || !data ? (
+      {isError || (!isLoading && !data) ? (
         <LoadingFailed
           text="Failed to load. Check your network."
           onTryAgain={() => refetch()}
@@ -164,6 +158,7 @@ const ProductsList: React.FC<ProductsListProps> = ({ onPressItem }) => {
           )}
         />
       )}
+      {isLoading ? <LoadingSpinner text="Loading products…" /> : null}
       {footer()}
     </>
   );

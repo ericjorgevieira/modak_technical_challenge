@@ -6,7 +6,7 @@ type LoadingSpinnerProps = {
 };
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ text }) => (
-  <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+  <View style={{ flex: 1, alignItems: "center", justifyContent: "flex-start" }}>
     <ActivityIndicator />
     <Text style={{ marginTop: 8 }}>{text}</Text>
   </View>
