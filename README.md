@@ -16,8 +16,8 @@ The app allows you to:
 ## 🚀 Quick Setup
 
 ```bash
-git clone https://github.com/your-username/products-app.git
-cd products-app
+git clone https://github.com/ericjorgevieira/modak_technical_challenge.git
+cd modak_technical_challenge
 npm install
 
 # run in Expo Go (without native module)
