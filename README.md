@@ -78,32 +78,19 @@ Required to use the reminder module on iOS.
 
 ### iOS
 
-1. Make sure you've prebuilt:
-
-```bash
-npx expo prebuild
-```
-
-2. Add permission to `Info.plist`:
-
-```xml
-<key>NSCalendarsUsageDescription</key>
-<string>We need access to your calendar to add a purchase reminder.</string>
-```
-
-3. Compile and install on the simulator/device:
+1. Compile and install on the simulator/device:
 
 ```bash
 npx expo run:ios
 ```
 
-4. Start with Dev Client:
+2. Start with Dev Client:
 
 ```bash
 npx expo start --dev-client
 ```
 
-5. Open a product → tap **Add reminder**. iOS will ask for access to the calendar.
+3. Open a product → tap **Add reminder**. iOS will ask for access to the calendar.
 
 ### Android
 
