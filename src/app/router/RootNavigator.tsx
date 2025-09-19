@@ -1,6 +1,5 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, Text } from "react-native";
 import HomeScreen from "../screens/HomeScreen";
 import ProductDetailsScreen from "../screens/ProductDetailsScreen";
 
@@ -11,14 +10,6 @@ export type RootStackParamList = {
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-
-function Placeholder({ title }: { title: string }) {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>{title}</Text>
-    </View>
-  );
-}
 
 export default function RootNavigator() {
   return (
